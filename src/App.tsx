@@ -13,7 +13,7 @@ const App: React.FC = () => {
     if (newMovieTitle.trim() !== '') {
       setMovieItems((prevItems) => [
         ...prevItems,
-        {id: generateUniqueId(), text: newMovieTitle.trim()},
+        { id: generateUniqueId(), text: newMovieTitle.trim(), isEditing: false },
       ]);
       setNewMovieTitle('');
     }
@@ -55,6 +55,7 @@ const App: React.FC = () => {
               text={movie.text}
               onDelete={() => handleDelete(movie.id)}
               onEdit={(newText) => handleEdit(movie.id, newText)}
+              isEditing={movie.isEditing}
             />
           ))}
         </div>
